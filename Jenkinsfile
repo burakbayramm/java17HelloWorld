@@ -6,5 +6,10 @@ pipeline{
                 git branch: 'jenkinsfile', url: 'https://github.com/burakbayramm/java17HelloWorld.git'
             }
         }
+        stage('sleep'){
+            steps{
+               bash "sleep 60000"
+            }
+        }
     }
 }
