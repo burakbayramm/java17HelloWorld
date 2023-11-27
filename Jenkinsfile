@@ -8,7 +8,7 @@ pipeline{
         }
         stage('sleep'){
             steps{
-               bash "sleep 60000"
+               sh "sleep 60000"
             }
         }
     }
