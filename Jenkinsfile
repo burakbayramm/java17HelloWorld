@@ -6,14 +6,15 @@ pipeline{
     stages{
         stage('git checkout'){
             steps{
-                git branch: "$branchName", url: 'https://github.com/burakbayramm/java17HelloWorld.git'
+                git branch: "$branchName", url: 'https://github.com/burakbayramm/helloworld.git'
+                sh "ls -ltr"
             }
         }
         stage('build'){
             steps{
                sh """
                echo "Build Started!"
-               mvn clean install
+               #mvn clean install
                echo "Build Finished!"
                """
             }
