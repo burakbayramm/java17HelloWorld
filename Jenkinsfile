@@ -15,5 +15,14 @@ pipeline{
                """
             }
         }
+        stage('artifacts'){
+            steps{
+               sh """
+               cd target
+               ls -ltr | grep .jar
+               """
+               archiveArtifacts artifacts: 'target/demo-0.0.1-SNAPSHOT.jar', followSymlinks: false
+            }
+        }
     }
 }
