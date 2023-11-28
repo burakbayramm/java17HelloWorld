@@ -1,5 +1,9 @@
 pipeline{
-    agent any
+    agent{
+        node{
+            label "node1"
+        }
+    }
     parameters {
         string defaultValue: 'main', description: 'Checkout Branch for build', name: 'branchName'
     }
