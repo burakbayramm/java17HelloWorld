@@ -11,7 +11,6 @@ pipeline{
         stage('CleanWorkspace'){
             steps{
                cleanWs()
-               sh "sleep 30"
             }
         }
         stage('git checkout'){
