@@ -4,17 +4,22 @@ pipeline{
         string defaultValue: 'main', description: 'Checkout Branch for build', name: 'branchName'
     }
     stages{
+        stage('CleanWorkspace'){
+            steps{
+               cleanWs()
+               sh "sleep 30"
+            }
+        }
         stage('git checkout'){
             steps{
-                git branch: "$branchName", url: 'https://github.com/burakbayramm/helloworld.git'
-                sh "ls -ltr"
+                git branch: "$branchName", url: 'https://github.com/burakbayramm/java17HelloWorld.git'
             }
         }
         stage('build'){
             steps{
                sh """
                echo "Build Started!"
-               #mvn clean install
+               mvn clean install
                echo "Build Finished!"
                """
             }
