@@ -6,9 +6,13 @@ pipeline{
                 git branch: 'jenkinsfile', url: 'https://github.com/burakbayramm/java17HelloWorld.git'
             }
         }
-        stage('sleep'){
+        stage('build'){
             steps{
-               sh "sleep 60000"
+               sh """
+               echo "Build Started!"
+               mvn clean install
+               echo "Build Finished!"
+               """
             }
         }
     }
