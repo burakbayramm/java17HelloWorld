@@ -15,7 +15,7 @@ pipeline{
         }
         stage('git checkout'){
             steps{
-                git branch: "$branchName", url: 'https://github.com/burakbayramm/java17HelloWorld.git'
+                checkout scm
             }
         }
         stage('build'){
