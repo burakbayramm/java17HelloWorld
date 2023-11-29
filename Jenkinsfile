@@ -17,7 +17,7 @@ pipeline{
             steps{
                sh """
                echo "My job working on docker! "
-               
+               sleep 6000
                """
             }
         }
