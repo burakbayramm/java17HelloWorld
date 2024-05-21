@@ -7,12 +7,18 @@ pipeline{
                 cleanWs()
             }
         }
-        stage("SecondStage"){
+        stage("Hello World"){
             steps{
                 sh "pwd"
                 sh """
                 echo "Hello, my firt pipeline" > hello.txt
                 """
+            }
+        }
+        stage("Whoami/Whereami"){
+            steps{
+                sh "whoami"
+                sh "pwd"
             }
         }
         stage("Archive Text"){
