@@ -1,6 +1,9 @@
 pipeline{
-    agent any
-    
+    agent{
+        node{
+            label "ssh_node1"
+        }
+    }
     stages{
         stage("CleanWorkspace"){
             steps{
@@ -12,6 +15,7 @@ pipeline{
                 sh "pwd"
                 sh """
                 echo "Hello, my firt pipeline" > hello.txt
+                sleep 300
                 """
             }
         }
