@@ -21,6 +21,12 @@ pipeline{
                 sh "pwd"
             }
         }
+        stage("date"){
+            steps{
+                sh "date"
+                
+            }
+        }
         stage("Archive Text"){
             steps{
                 archiveArtifacts allowEmptyArchive: true, artifacts: 'hello.txt', followSymlinks: false
