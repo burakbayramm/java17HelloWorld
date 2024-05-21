@@ -15,12 +15,6 @@ pipeline{
                 """
             }
         }
-        stage("Whoami/Whereami"){
-            steps{
-                sh "whoami"
-                sh "pwd"
-            }
-        }
         stage("Archive Text"){
             steps{
                 archiveArtifacts allowEmptyArchive: true, artifacts: 'hello.txt', followSymlinks: false
