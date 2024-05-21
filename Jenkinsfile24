@@ -4,10 +4,19 @@ pipeline{
             label "ssh_node1"
         }
     }
+    parameters {
+        string defaultValue: 'main', description: 'Checkout Branch', name: 'checkoutBranch'
+    }
     stages{
         stage("CleanWorkspace"){
             steps{
                 cleanWs()
+            }
+        }
+        stage("checkout source code"){
+            steps{
+                git branch: "$checkoutBranch", url: 'https://github.com/burakbayramm/java17HelloWorld'
+                sh "ls -ltr"
             }
         }
         stage("Hello World"){
