@@ -15,7 +15,6 @@ pipeline{
                 sh "pwd"
                 sh """
                 echo "Hello, my firt pipeline" > hello.txt
-                sleep 300
                 """
             }
         }
