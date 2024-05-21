@@ -1,0 +1,31 @@
+pipeline{
+    agent any
+    
+    stages{
+        stage("CleanWorkspace"){
+            steps{
+                cleanWs()
+            }
+        }
+        stage("SecondStage"){
+            steps{
+                sh "pwd"
+                sh """
+                echo "Hello, my firt pipeline" > hello.txt
+                """
+            }
+        }
+        stage("Archive Text"){
+            steps{
+                archiveArtifacts allowEmptyArchive: true, artifacts: 'hello.txt', followSymlinks: false
+            }
+        }
+    }
+
+    post {
+        always {
+            emailext body: 'Finished', subject: 'Job', to: 'burak.bayram@simens.com'
+        }
+        
+    }
+}
