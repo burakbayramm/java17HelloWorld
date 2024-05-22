@@ -23,7 +23,7 @@ pipeline{
             steps{
                 sh "pwd"
                 sh """
-                echo "Build Started
+                echo "Build Started"
                 sleep 60
                 """
             }
