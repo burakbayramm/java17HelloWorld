@@ -1,7 +1,7 @@
 pipeline{
     agent{
         node{
-            label "ssh_node1"
+            label "jenkins_ssh_slave_jdk11"
         }
     }
     parameters {
@@ -19,29 +19,13 @@ pipeline{
                 sh "ls -ltr"
             }
         }
-        stage("Hello World"){
+        stage("Build"){
             steps{
                 sh "pwd"
                 sh """
-                echo "Hello, my firt pipeline" > hello.txt
+                echo "Build Started
+                sleep 60
                 """
-            }
-        }
-        stage("Whoami/Whereami"){
-            steps{
-                sh "whoami"
-                sh "pwd"
-            }
-        }
-        stage("date"){
-            steps{
-                sh "date"
-                
-            }
-        }
-        stage("Archive Text"){
-            steps{
-                archiveArtifacts allowEmptyArchive: true, artifacts: 'hello.txt', followSymlinks: false
             }
         }
     }
