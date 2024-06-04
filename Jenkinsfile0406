@@ -25,6 +25,7 @@ pipeline{
             }
             steps{
                 sh """
+                    echo "june24 is my main development branch"
                     java --version
                     mvn -version
                     mvn clean install
