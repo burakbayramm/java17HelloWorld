@@ -4,6 +4,7 @@ pipeline{
     parameters {
         choice choices: ['1.0.0', '1.1.0'], description: 'Product Version', name: 'product_version'
         string defaultValue: 'dev', description: 'Source Code Branch', name: 'checkout_branch'
+        choice choices: ['CI', 'CD'], description: 'Pipeline Type', name: 'pipeline_type'
     }
     options {
         buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '2', daysToKeepStr: '', numToKeepStr: '4')
@@ -37,8 +38,22 @@ pipeline{
             }
         }
         stage("Archive Artifacts"){
+             when {
+                    environment name: 'pipeline_type', value: 'CD'
+                }
             steps{
                 archiveArtifacts artifacts: 'target/helloWorld-*.jar', followSymlinks: false
+            }
+        }
+        stage("Deployment "){
+             when {
+                    environment name: 'pipeline_type', value: 'CD'
+                }
+            steps{
+                sh """
+                    cd target
+                    #java -jar hello-*.jar
+                """
             }
         }
         
