@@ -32,6 +32,8 @@ pipeline{
                     mv echo.jar "echo-${product_version}-${BUILD_NUMBER}.jar"
                 """
                 sh """
+                    java --version
+                    mvn -version
                     mvn clean install
                 """
             }
