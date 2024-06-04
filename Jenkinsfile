@@ -14,6 +14,13 @@ pipeline{
                 cleanWs()
             }
         }
+        stage("Additional Stage"){
+            steps{
+                sh """
+                echo "my additional stage is added from scm"
+                """
+            }
+        }
         stage("Project Build"){
             steps{
                 sh """
