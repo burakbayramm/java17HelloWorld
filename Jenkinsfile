@@ -1,5 +1,9 @@
 pipeline{
-    agent any
+    agent{
+        node{
+            label "ssh_node"
+        }
+    }
     
     parameters {
         choice choices: ['1.0.0', '1.1.0'], description: 'Product Version', name: 'product_version'
@@ -53,6 +57,7 @@ pipeline{
                 sh """
                     cd target
                     #java -jar hello-*.jar
+                    sleep 90
                 """
             }
         }
