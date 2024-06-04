@@ -1,0 +1,36 @@
+pipeline{
+    agent any
+
+    options {
+        buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '2', daysToKeepStr: '', numToKeepStr: '4')
+    }
+    stages{
+        stage("CleanWorkspace"){
+            steps{
+                cleanWs()
+            }
+        }
+        stage("Source code checkout"){
+            steps{
+                checkout scm
+                //git branch: "$checkout_branch", url: 'https://github.com/burakbayramm/java17HelloWorld'
+                // checkout scmGit(branches: [[name: 'main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/burakbayramm/java17HelloWorld']])
+                // checkout scmGit(branches: [[name: 'main']], extensions: [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'src/']]]], userRemoteConfigs: [[url: 'https://github.com/burakbayramm/java17HelloWorld']])
+            }
+        }
+        stage("Project Build"){
+            tools {
+                maven "maven_3.2.5"
+                jdk "jdk-17"
+            }
+            steps{
+                sh """
+                    java --version
+                    mvn -version
+                    mvn clean install
+                """
+            }
+        }
+        
+    }
+}
