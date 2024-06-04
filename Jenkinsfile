@@ -27,6 +27,9 @@ pipeline{
                     echo "This is my first Jenkins project!" > echo.jar
                     mv echo.jar "echo-${product_version}-${BUILD_NUMBER}.jar"
                 """
+                sh """
+                    mvn clean install
+                """
             }
         }
         stage("Archive Artifacts"){
