@@ -22,6 +22,9 @@ pipeline{
             }
         }
         stage("Project Build"){
+            tools {
+                maven "maven_3.9.7"
+            }
             steps{
                 sh """
                     echo "This is my first Jenkins project!" > echo.jar
