@@ -23,7 +23,8 @@ pipeline{
         }
         stage("Project Build"){
             tools {
-                maven "maven_3.9.7"
+                maven "maven_3.2.5"
+                jdk "jdk-17"
             }
             steps{
                 sh """
