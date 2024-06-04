@@ -28,19 +28,17 @@ pipeline{
             }
             steps{
                 sh """
-                    echo "This is my first Jenkins project!" > echo.jar
-                    mv echo.jar "echo-${product_version}-${BUILD_NUMBER}.jar"
-                """
-                sh """
                     java --version
                     mvn -version
                     mvn clean install
+                    cd target 
+                    mv demo-0.0.1-SNAPSHOT.jar "helloWorld-${product_version}-${BUILD_NUMBER}.jar"
                 """
             }
         }
         stage("Archive Artifacts"){
             steps{
-                archiveArtifacts artifacts: 'echo*.jar', followSymlinks: false
+                archiveArtifacts artifacts: 'target/helloWorld-*.jar', followSymlinks: false
             }
         }
         
