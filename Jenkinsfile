@@ -9,16 +9,16 @@ pipeline{
         buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '2', daysToKeepStr: '', numToKeepStr: '4')
     }
     stages{
-        stage("ClenWorkspace"){
+        stage("CleanWorkspace"){
             steps{
                 cleanWs()
             }
         }
-        stage("Additional Stage"){
+        stage("Source code checkout"){
             steps{
-                sh """
-                echo "my additional stage is added from scm"
-                """
+                git branch: 'main', url: 'https://github.com/burakbayramm/java17HelloWorld'
+                // checkout scmGit(branches: [[name: 'main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/burakbayramm/java17HelloWorld']])
+                // checkout scmGit(branches: [[name: 'main']], extensions: [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'src/']]]], userRemoteConfigs: [[url: 'https://github.com/burakbayramm/java17HelloWorld']])
             }
         }
         stage("Project Build"){
