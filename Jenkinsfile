@@ -16,7 +16,7 @@ pipeline{
         }
         stage("Source code checkout"){
             steps{
-                git branch: 'main', url: 'https://github.com/burakbayramm/java17HelloWorld'
+                git branch: "$checkout_branch", url: 'https://github.com/burakbayramm/java17HelloWorld'
                 // checkout scmGit(branches: [[name: 'main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/burakbayramm/java17HelloWorld']])
                 // checkout scmGit(branches: [[name: 'main']], extensions: [[$class: 'SparseCheckoutPaths', sparseCheckoutPaths: [[path: 'src/']]]], userRemoteConfigs: [[url: 'https://github.com/burakbayramm/java17HelloWorld']])
             }
