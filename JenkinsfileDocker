@@ -9,7 +9,13 @@ pipeline{
             steps{
                 sh """
                 echo "This is my first docker pipeline!"
-                sleep 60
+                """
+            }
+        }
+        stage("FINISH LAB"){
+            steps{
+                sh """
+                echo "THIS IS OUR LAST EXAMPLE 4 DEEP DIVE JENKINS SESSION ^_^"
                 """
             }
         }
