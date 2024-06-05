@@ -1,0 +1,18 @@
+pipeline{
+    agent{
+        node{
+            label "dockerSlave-jdk11"
+        }
+    }
+    stages{
+        stage("DockerStage"){
+            steps{
+                sh """
+                echo "This is my first docker pipeline!"
+                sleep 60
+                """
+            }
+        }
+    }
+}
+    
