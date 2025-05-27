@@ -36,6 +36,13 @@ pipeline{
                 archiveArtifacts artifacts: "helloWorld-${BUILD_NUMBER}.jar", followSymlinks: false
             }
         }
+        stage("Welcome to SCM Stage"){
+            steps{
+                sh"""
+                    echo "Welcome to Pipeline as a Code Approach"
+                """
+            }
+        }
     }
     post {
         always {
