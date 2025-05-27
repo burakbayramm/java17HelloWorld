@@ -1,6 +1,6 @@
 pipeline{
     agent {
-        label 'ubuntu-slave'
+        label 'hero'
     }
     options {
         buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '2', daysToKeepStr: '', numToKeepStr: '5')
