@@ -26,11 +26,6 @@ pipeline{
                 """
             }
         }
-        stage("Archive Artifacts"){
-            steps{
-                archiveArtifacts artifacts: "helloWorld-${BUILD_NUMBER}.jar", followSymlinks: false
-            }
-        }
         stage("Welcome to SCM Stage"){
             steps{
                 sh"""
