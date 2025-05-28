@@ -4,9 +4,9 @@ pipeline {
         label 'built-in'
     }
     stages {
-        stage('Run on Ubuntu Slave ') {
+        stage('Run my Echo Commands ') {
             parallel {
-                stage('Paralel1') {
+                stage('Run on Ubuntu Slave') {
                     agent {
                         label "ubuntu-slave"
                     }
