@@ -1,0 +1,35 @@
+#https://www.jenkins.io/blog/2017/09/25/declarative-1/
+pipeline {
+    agent {
+        label 'built-in'
+    }
+    stages {
+        stage('Run on Ubuntu Slave ') {
+            parallel {
+                stage('Paralel1') {
+                    agent {
+                        label "ubuntu-slave"
+                    }
+                    steps {
+                        sh """
+                        echo "Running on Ubuntu Slave"
+                        sleep 6000
+                        """
+                    }
+                }
+                stage('Run on Docker Agent') {
+                    agent {
+                        label "docker-agent-jdk11-jdk17"
+                    }
+                    steps {
+                        sh """
+                        echo "Running on Docker Agent"
+                        sleep 6000
+                        """
+                    }
+                }
+            }
+        }
+    }
+}
+
