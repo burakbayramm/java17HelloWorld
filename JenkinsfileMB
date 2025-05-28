@@ -26,13 +26,6 @@ pipeline{
                 """
             }
         }
-        stage("Welcome to SCM Stage"){
-            steps{
-                sh"""
-                    echo "Welcome to Pipeline as a Code Approach"
-                """
-            }
-        }
     }
     post {
         always {
