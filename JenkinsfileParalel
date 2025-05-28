@@ -1,4 +1,4 @@
-#https://www.jenkins.io/blog/2017/09/25/declarative-1/
+//https://www.jenkins.io/blog/2017/09/25/declarative-1/
 pipeline {
     agent {
         label 'built-in'
