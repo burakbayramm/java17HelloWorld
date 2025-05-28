@@ -1,6 +1,6 @@
 pipeline{
     agent {
-        label 'ubuntu-slave'
+        label 'docker-agent-jdk11-jdk17'
     }
     options {
         buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '2', daysToKeepStr: '', numToKeepStr: '5')
