@@ -13,7 +13,7 @@ pipeline {
                     steps {
                         sh """
                         echo "Running on Ubuntu Slave"
-                        sleep 6000
+                        sleep 600
                         """
                     }
                 }
@@ -24,10 +24,18 @@ pipeline {
                     steps {
                         sh """
                         echo "Running on Docker Agent"
-                        sleep 6000
+                        sleep 600
                         """
                     }
                 }
+            }
+        }
+        stage('DeepDive Jenkins Lab End'){
+            steps{
+                sh """
+                    echo "Dinlediğiniz için teşekkürler"
+                """
+
             }
         }
     }
